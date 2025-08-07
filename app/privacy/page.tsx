@@ -1,28 +1,11 @@
 import Link from "next/link"
+import { Header } from "@/components/Navigation"
+import { Footer } from "@/components/Footer"
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">JR</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">Justice and Responsibility Charter</span>
-            </Link>
-            <nav className="hidden md:flex space-x-6">
-              <Link href="/" className="text-gray-600 hover:text-blue-600">Home</Link>
-              <Link href="/about" className="text-gray-600 hover:text-blue-600">About</Link>
-              <Link href="/sign" className="text-gray-600 hover:text-blue-600">Sign Charter</Link>
-              <Link href="/signatories" className="text-gray-600 hover:text-blue-600">Signatories</Link>
-              <Link href="/contact" className="text-gray-600 hover:text-blue-600">Contact</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header className="bg-white shadow-sm" />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
@@ -179,16 +162,7 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 text-gray-600 py-8 mt-12">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2025 Justice and Responsibility Charter. A movement for government accountability.</p>
-          <div className="mt-4 space-x-4">
-            <Link href="/privacy" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</Link>
-            <Link href="/contact" className="text-blue-600 hover:text-blue-700 underline">Contact</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

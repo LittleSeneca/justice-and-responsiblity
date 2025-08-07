@@ -13,6 +13,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CheckCircle } from "lucide-react"
+import { Header } from "@/components/Navigation"
+import { Footer } from "@/components/Footer"
 
 export default function SignPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -124,36 +126,7 @@ export default function SignPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="border-b bg-white sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">J&R</span>
-              </div>
-              <span className="font-bold text-xl">Justice & Responsibility</span>
-            </div>
-            <div className="flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
-                Charter
-              </Link>
-              <Link href="/signatories" className="text-gray-700 hover:text-blue-600 font-medium">
-                Signatories
-              </Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium">
-                About
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
-                Contact
-              </Link>
-              <Link href="/sign">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">Sign the Charter</Button>
-              </Link>
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto">
@@ -344,17 +317,7 @@ export default function SignPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 text-gray-600 py-8 mt-12">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2025 Justice and Responsibility Charter. A movement for government accountability.</p>
-          <div className="mt-4 space-x-4">
-            <Link href="/privacy" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</Link>
-            <Link href="/sitemap" className="text-blue-600 hover:text-blue-700 underline">Site Map</Link>
-            <Link href="/contact" className="text-blue-600 hover:text-blue-700 underline">Contact</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
