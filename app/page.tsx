@@ -188,7 +188,12 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-r from-blue-600 to-[#BF0A30] text-white">
+      <section 
+        className="py-12 text-white relative bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/tyranny.jpg')"
+        }}
+      >
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">The Justice and Responsibility Charter</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
@@ -197,18 +202,18 @@ export default function HomePage() {
 
           {/* Counters */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-8">
-            <Card className="bg-white/10 border-white/20 text-white">
+            <Card className="bg-white/90 border-white/50 text-gray-900">
               <CardContent className="p-6 text-center">
-                <Users className="w-8 h-8 mx-auto mb-2" />
+                <Users className="w-8 h-8 mx-auto mb-2 text-blue-600" />
                 <div className="text-3xl font-bold">{(stats.totalSignatories || 0).toLocaleString()}</div>
-                <div className="text-sm opacity-80">Total Signatories</div>
+                <div className="text-sm text-gray-600">Total Signatories</div>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 border-white/20 text-white">
+            <Card className="bg-white/90 border-white/50 text-gray-900">
               <CardContent className="p-6 text-center">
-                <UserCheck className="w-8 h-8 mx-auto mb-2" />
+                <UserCheck className="w-8 h-8 mx-auto mb-2 text-blue-600" />
                 <div className="text-3xl font-bold">{(stats.congressMembers || 0).toLocaleString()}</div>
-                <div className="text-sm opacity-80">Members of Congress</div>
+                <div className="text-sm text-gray-600">Members of Congress</div>
               </CardContent>
             </Card>
           </div>
@@ -218,6 +223,28 @@ export default function HomePage() {
               Add Your Signature
             </Button>
           </Link>
+        </div>
+        
+        {/* Image Attribution */}
+        <div className="absolute bottom-2 right-2 text-xs text-white/70 bg-black/30 px-2 py-1 rounded">
+          Photo by{' '}
+          <a 
+            href="https://unsplash.com/@timmossholder?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+            className="underline hover:text-white"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Tim Mossholder
+          </a>
+          {' '}on{' '}
+          <a 
+            href="https://unsplash.com/photos/us-a-flag-on-white-and-red-striped-textile-QsX23A3NgMQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+            className="underline hover:text-white"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Unsplash
+          </a>
         </div>
       </section>
 
