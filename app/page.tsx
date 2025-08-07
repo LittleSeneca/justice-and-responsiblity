@@ -161,17 +161,32 @@ export default function HomePage() {
       <Header className="bg-white/80 backdrop-blur-sm" />
 
       {/* Hero Section */}
-      <section 
-        className="py-12 text-white relative bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/tyranny.jpg')"
-        }}
-      >
+      <section className="py-12 text-white relative bg-gradient-to-br from-blue-800 via-blue-600 to-blue-500">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">The Justice and Responsibility Charter</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-            A call for transparency, accountability, and reform in American governance
-          </p>
+          {/* Call to Action Box */}
+          <div className="mb-8 max-w-5xl mx-auto">
+            <Card className="bg-white/95 border-white/50 text-gray-900">
+              <CardContent className="p-8 text-center">
+                                  <p className="text-lg md:text-xl leading-relaxed mb-6">
+                    The foundational principle of the United States government is that it derives its just powers from the consent of the governed. But, that consent has been violated. We can fix this through non-partisan structural reforms. That is what the Justice and Responsibility Charter aims to provide - A platform for Americans to hold their representatives accountable. <br />
+                    <br />
+                  </p>
+                  <div className="flex items-center justify-center gap-4 flex-wrap">
+                    <Button 
+                      className="bg-red-600 hover:bg-red-700 text-white px-6 py-2"
+                      onClick={() => scrollToRef('charter-text')}
+                    >
+                      Read the Charter
+                    </Button>
+                    <Link href="/sign">
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2">
+                        Add Your Signature
+                      </Button>
+                    </Link>
+                  </div>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Counters */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-8">
@@ -191,42 +206,70 @@ export default function HomePage() {
             </Card>
           </div>
 
-          <Link href="/sign">
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3">
-              Add Your Signature
-            </Button>
-          </Link>
+
         </div>
-        
-        {/* Image Attribution */}
-        <div className="absolute bottom-2 right-2 text-xs text-white/70 bg-black/30 px-2 py-1 rounded">
-          Photo by{' '}
-          <a 
-            href="https://unsplash.com/@timmossholder?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
-            className="underline hover:text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Tim Mossholder
-          </a>
-          {' '}on{' '}
-          <a 
-            href="https://unsplash.com/photos/us-a-flag-on-white-and-red-striped-textile-QsX23A3NgMQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
-            className="underline hover:text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
+      </section>
+
+      {/* Mission Statement Section */}
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+        <div className="container mx-auto px-4 max-w-6xl">
+          {/* Main Content Container */}
+          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div className="p-8 md:p-12">
+              {/* FAQ Grid */}
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* Question 1 */}
+                <div className="bg-white rounded-lg p-6 text-center border-2 border-blue-500">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    "What difference will this make?"
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    The difference is what effort you put in. This charter and your signature creates undeniable proof of bipartisan support for structural reforms, forcing politicians to take clear stances on transparency and accountability.
+                  </p>
+                </div>
+
+                {/* Question 2 */}
+                <div className="bg-white rounded-lg p-6 text-center border-2 border-blue-500">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    "Is this a political party?"
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    No. This charter is for all Americans who want transparent, just, and responsible government regardless of party affiliation. These are structural solutions, not partisan politics. We are not a political party. We are a movement.
+                  </p>
+                </div>
+
+                {/* Question 3 */}
+                <div className="bg-white rounded-lg p-6 text-center border-2 border-blue-500">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    "Why should I care?"
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    I'm personally tired of inaction. How about you? The corruption and dysfunction affecting every citizen can be fixed, but only if we demand better together. Politicians on both sides of the aisle are ignoring the will of the people. We can change that.
+                  </p>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Charter Text Section */}
+      <section id="charter-text" className="pt-6 pb-12 bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-6xl md:text-6xl font-bold text-blue-600 mb-4">
+          The Justice and Responsibility Charter
+          </h2>
         </div>
       </section>
 
       {/* Charter Content */}
-      <main className="container mx-auto px-4 py-12 max-w-4xl">
-        <div className="prose prose-lg max-w-none">
+      <main className="container mx-auto px-4 py-12 max-w-6xl">
+        <div className="prose prose-lg max-w-none border-2 border-blue-500 rounded-lg p-8 bg-white">
           {/* Preamble */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Preamble</h2>
+            <h2 className="text-3xl font-bold text-blue-600 mb-6">Preamble</h2>
             <div className="text-gray-700 leading-relaxed space-y-4">
               <p>
                 <strong>Whereas,</strong> the foundational principle of the United States government is that it derives
@@ -252,11 +295,11 @@ export default function HomePage() {
 
           {/* Articles of Grievance */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Articles of Grievance</h2>
+            <h2 className="text-3xl font-bold text-blue-600 mb-6">Articles of Grievance</h2>
 
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Article I: On Fiscal Malfeasance</h3>
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">Article I: On Fiscal Malfeasance</h3>
                 <p className="text-gray-700 leading-relaxed">
                   The federal government has engaged in decades of reckless fiscal policy, culminating in a national
                   debt currently totaling <LiveDebtCounter /><button onClick={() => scrollToRef('ref1')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">1</button>. This represents approximately <LiveDebtPerPerson /><button onClick={() => scrollToRef('ref2')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">2</button> for every person in America. This sum represents a catastrophic
@@ -266,7 +309,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Article II: On the Withholding of Information of Public Interest
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -279,7 +322,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Article III: On the Subversion of the Democratic Process
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -291,7 +334,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Article IV: On the Entrenchment of an Unrepresentative Political Class
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -304,7 +347,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Article V: On Obfuscation in the Legislative Process
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -320,7 +363,7 @@ export default function HomePage() {
 
           {/* Declaration and Platform */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Declaration and Platform</h2>
+            <h2 className="text-3xl font-bold text-blue-600 mb-6">Declaration and Platform</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               Therefore, in response to these grievances and to restore integrity, accountability, and justice to the
               governance of the United States, we, the people, do hereby establish the Justice and Responsibility Charter
@@ -329,7 +372,7 @@ export default function HomePage() {
 
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Section 1: Fiscal Responsibility and Balanced Governance
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -341,7 +384,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Section 2: The Special Commission on Full Disclosure
                 </h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -384,7 +427,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Section 3: Fair and Independent Congressional Districting
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -396,7 +439,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Section 4: Congressional Term Limits</h3>
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">Section 4: Congressional Term Limits</h3>
                 <p className="text-gray-700 leading-relaxed">
                   No person shall serve as a member of Congress for more than 6 (6) total terms in the House of
                   Representatives, and no more than four (4) total terms in the Senate<button onClick={() => scrollToRef('ref9')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">9</button>.
@@ -404,7 +447,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Section 5: Campaign Finance and Ethics Reform
                 </h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -437,7 +480,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   Section 6: Legislative Transparency and Readability
                 </h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -481,17 +524,41 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Call to Action */}
-          <section className="text-center py-12 bg-gray-50 rounded-lg">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Join the Movement</h2>
-            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-              Add your voice to the growing call for transparency, accountability, and reform in American governance.
-            </p>
-            <Link href="/sign">
-              <Button size="lg" className="text-lg px-8 py-3">
-                Sign the Charter Now
-              </Button>
-            </Link>
+        </div>
+          {/* Mission Statement Section */}
+          <section className="py-12 bg-gradient-to-b from-gray-50 to-gray-100 rounded-lg my-12">
+            <div className="container mx-auto px-4 max-w-4xl">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 border border-blue-200">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Mission</h3>
+                <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
+                  <p>
+                    <strong>We reject the defeatist narrative</strong> that corruption, dysfunction, and systematic failures are simply "the way things work." The Justice and Responsibility Charter provides proof that Americans across the political spectrum agree on how our government should function.
+                  </p>
+                  <p>
+                    <strong>This is not a partisan issue. It's an American issue.</strong> Most crises facing our nation are symptoms of broken systems that prioritize special interests over the public good. By addressing these foundational problems through constitutional reforms, we can restore trust to American governance.
+                  </p>
+                  <p className="text-center font-semibold text-blue-800">
+                    As this movement grows, the most common question Americans will ask their representatives is: <br />
+                    <em>"Did you sign the Justice and Responsibility Charter?"</em>
+                  </p>
+                </div>
+              </div>
+
+              {/* Enhanced Call to Action */}
+              <div className="text-center mt-12">
+                <p className="text-lg text-gray-600 mb-6">
+                  Real change begins when we stop treating symptoms and start curing the disease itself.
+                </p>
+                <Link href="/sign">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4">
+                    Add Your Voice to the Movement
+                  </Button>
+                </Link>
+                <p className="text-sm text-gray-500 mt-4">
+                  Join thousands of Americans demanding transparent, accountable governance
+                </p>
+              </div>
+            </div>
           </section>
 
           {/* References/Appendix */}
@@ -806,7 +873,6 @@ export default function HomePage() {
               </div>
             </div>
           </section>
-        </div>
       </main>
 
       <Footer />
