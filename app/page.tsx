@@ -6,6 +6,122 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Users, UserCheck } from "lucide-react"
 import { useEffect, useState } from "react"
 
+// Live debt counter component
+function LiveDebtCounter() {
+  const [currentDebt, setCurrentDebt] = useState(36930452345865)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchDebt = async () => {
+      try {
+        const response = await fetch('https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page[size]=1')
+        if (response.ok) {
+          const data = await response.json()
+          if (data.data && data.data.length > 0) {
+            const latestDebt = parseFloat(data.data[0].tot_pub_debt_out_amt)
+            if (!isNaN(latestDebt)) {
+              setCurrentDebt(latestDebt)
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching debt data:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    // Fetch immediately
+    fetchDebt()
+
+    // Then fetch every 3 seconds
+    const interval = setInterval(fetchDebt, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const formatDebt = (debt: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(debt)
+  }
+
+  return (
+    <span className={`font-bold text-red-600 transition-all duration-500 ${isLoading ? 'animate-pulse' : ''}`}>
+      {formatDebt(currentDebt)}
+    </span>
+  )
+}
+
+// Live debt per person counter component
+function LiveDebtPerPerson() {
+  const [currentDebt, setCurrentDebt] = useState(36930452345865)
+  const [currentPopulation, setCurrentPopulation] = useState(335893238)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch debt data
+        const debtResponse = await fetch('https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page[size]=1')
+        if (debtResponse.ok) {
+          const debtData = await debtResponse.json()
+          if (debtData.data && debtData.data.length > 0) {
+            const latestDebt = parseFloat(debtData.data[0].tot_pub_debt_out_amt)
+            if (!isNaN(latestDebt)) {
+              setCurrentDebt(latestDebt)
+            }
+          }
+        }
+
+        // Fetch population data
+        const popResponse = await fetch('https://api.census.gov/data/2023/pep/charv?get=POP&for=us:*&YEAR=2023')
+        if (popResponse.ok) {
+          const popData = await popResponse.json()
+          if (popData && popData.length > 1 && popData[1][0]) {
+            const latestPop = parseInt(popData[1][0])
+            if (!isNaN(latestPop)) {
+              setCurrentPopulation(latestPop)
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    // Fetch immediately
+    fetchData()
+
+    // Then fetch every 3 seconds
+    const interval = setInterval(fetchData, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const debtPerPerson = currentDebt / currentPopulation
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(amount)
+  }
+
+  return (
+    <span className={`font-bold text-red-600 transition-all duration-500 ${isLoading ? 'animate-pulse' : ''}`}>
+      {formatCurrency(debtPerPerson)}
+    </span>
+  )
+}
+
 export default function HomePage() {
   const [stats, setStats] = useState({ totalSignatories: 0, congressMembers: 0 })
 
@@ -43,11 +159,17 @@ export default function HomePage() {
               <span className="font-bold text-xl">Justice & Responsibility</span>
             </div>
             <div className="flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
+              <Link href="/" className="text-blue-600 font-medium">
                 Charter
               </Link>
               <Link href="/signatories" className="text-gray-700 hover:text-blue-600 font-medium">
                 Signatories
+              </Link>
+              <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium">
+                About
+              </Link>
+              <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
+                Contact
               </Link>
               <Link href="/sign">
                 <Button>Sign the Charter</Button>
@@ -129,7 +251,7 @@ export default function HomePage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Article I: On Fiscal Malfeasance</h3>
                 <p className="text-gray-700 leading-relaxed">
                   The federal government has engaged in decades of reckless fiscal policy, culminating in a national
-                  debt exceeding thirty-nine trillion dollars ($39,000,000,000,000). This sum represents a catastrophic
+                  debt currently totaling <LiveDebtCounter />. This represents approximately <LiveDebtPerPerson /> for every person in America. This sum represents a catastrophic
                   failure of stewardship, imposes an unsustainable burden upon current and future generations, and
                   jeopardizes the economic sovereignty of the Nation.
                 </p>
@@ -366,7 +488,7 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
+      <footer className="bg-white border-t border-gray-200 text-gray-600 py-8">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; 2024 Justice and Responsibility Charter. A movement for government accountability.</p>
         </div>

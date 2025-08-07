@@ -138,6 +138,12 @@ export default function SignPage() {
               <Link href="/signatories" className="text-gray-700 hover:text-blue-600 font-medium">
                 Signatories
               </Link>
+              <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium">
+                About
+              </Link>
+              <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
+                Contact
+              </Link>
               <Link href="/sign">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white">Sign the Charter</Button>
               </Link>
@@ -310,7 +316,7 @@ export default function SignPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-12">
+      <footer className="bg-white border-t border-gray-200 text-gray-600 py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; 2024 Justice and Responsibility Charter. A movement for government accountability.</p>
         </div>
