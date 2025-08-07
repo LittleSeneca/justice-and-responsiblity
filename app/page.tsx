@@ -323,8 +323,8 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Declaration and Platform</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               Therefore, in response to these grievances and to restore integrity, accountability, and justice to the
-              governance of the United States, we, the people, do hereby establish the Justice and Responsibility Party
-              and proclaim the following platform as its foundational tenets:
+              governance of the United States, we, the people, do hereby establish the Justice and Responsibility Charter
+              and proclaim the following statements as its foundational tenets:
             </p>
 
             <div className="space-y-8">
