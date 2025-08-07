@@ -154,6 +154,19 @@ export default function SignPage() {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Label htmlFor="signingType">How would you like to sign the charter? *</Label>
+                  <Select onValueChange={(value) => handleInputChange("signingType", value)} defaultValue="public">
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select signing preference" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="public">Public with name - Show my name on the public signatories list</SelectItem>
+                      <SelectItem value="private">Private with name - Record my signature but don't show my name publicly</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="firstName">First Name *</Label>
@@ -317,22 +330,6 @@ export default function SignPage() {
                       </p>
                     </div>
                   )}
-                </div>
-
-                <div>
-                  <Label htmlFor="signingType">How would you like to sign the charter? *</Label>
-                  <Select onValueChange={(value) => handleInputChange("signingType", value)} defaultValue="public">
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select signing preference" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="public">Public with name - Show my name on the public signatories list</SelectItem>
-                      <SelectItem value="private">Private with name - Record my signature but don't show my name publicly</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-gray-600 mt-1">
-                    Both options record your signature equally. Choosing "private" means your name won't appear on the public list, but your signature is still counted.
-                  </p>
                 </div>
 
                 <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" size="lg">
