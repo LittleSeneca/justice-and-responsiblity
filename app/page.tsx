@@ -233,8 +233,8 @@ export default function HomePage() {
                 its just powers from the consent of the governed;
               </p>
               <p>
-                <strong>Whereas,</strong> the three branches of the federal government—Legislative, Executive, and
-                Judicial—have collectively failed to uphold their constitutional and fiduciary duties to the American
+                <strong>Whereas,</strong> the three branches of the federal government - Legislative, Executive, and
+                Judicial - have collectively failed to uphold their constitutional and fiduciary duties to the American
                 people, leading to a crisis of confidence and a systemic erosion of public trust;
               </p>
               <p>

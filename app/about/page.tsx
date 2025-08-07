@@ -92,7 +92,7 @@ export default function AboutPage() {
           <section className="text-center bg-blue-50 rounded-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Be Part of the Solution?</h2>
             <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Join thousands of Americans who believe that our government can and should work better. This isn't about political parties—it's about common-sense reforms that benefit everyone.
+              Join thousands of Americans who believe that our government can and should work better. This isn't about political parties - it's about common-sense reforms that benefit everyone.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/sign">
