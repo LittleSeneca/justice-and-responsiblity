@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import './globals.css'
@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   creator: 'Graham Brooks',
   publisher: 'Justice and Responsibility Charter',
   manifest: '/site.webmanifest',
-  themeColor: '#2563eb',
-  viewport: 'width=device-width, initial-scale=1',
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -39,6 +37,12 @@ export const metadata: Metadata = {
     title: 'Justice and Responsibility Charter',
     description: 'A call for transparency, accountability, and reform in American governance',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#2563eb',
 }
 
 export default function RootLayout({

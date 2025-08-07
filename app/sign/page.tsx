@@ -21,9 +21,17 @@ export default function SignPage() {
   
   // Debug: Check if environment variables are loaded
   useEffect(() => {
-    console.log('Turnstile Site Key:', process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? 'Loaded' : 'Missing')
-  console.log('Site Key Value:', process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY)
-  console.log('Current Domain:', typeof window !== 'undefined' ? window.location.hostname : 'Server-side')
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+    console.log('🔧 Turnstile Debug Info:')
+    console.log('- Site Key Status:', siteKey ? 'Loaded' : 'Missing')
+    console.log('- Site Key Value:', siteKey || 'UNDEFINED')
+    console.log('- Site Key Length:', siteKey?.length || 0)
+    console.log('- Current Domain:', typeof window !== 'undefined' ? window.location.hostname : 'Server-side')
+    console.log('- User Agent:', typeof window !== 'undefined' ? window.navigator.userAgent : 'Server-side')
+    
+    if (!siteKey || siteKey === '' || siteKey === 'placeholder') {
+      console.error('❌ Turnstile Site Key is invalid or missing!')
+    }
   }, [])
   const [formData, setFormData] = useState({
     firstName: "",
@@ -39,17 +47,19 @@ export default function SignPage() {
 
   // Turnstile callback functions
   const onTurnstileSuccess = (token: string) => {
+    console.log('✅ Turnstile verified successfully', { token: token.substring(0, 20) + '...' })
     setTurnstileToken(token)
-    console.log('Turnstile verified successfully')
   }
 
-  const onTurnstileError = () => {
-    console.error('Turnstile error occurred')
+  const onTurnstileError = (error?: any) => {
+    console.error('❌ Turnstile error occurred:', error)
+    console.error('- Domain:', typeof window !== 'undefined' ? window.location.hostname : 'unknown')
+    console.error('- Site Key:', process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || 'MISSING')
     setTurnstileToken(null)
   }
 
   const onTurnstileExpired = () => {
-    console.log('Turnstile token expired')
+    console.log('⏰ Turnstile token expired')
     setTurnstileToken(null)
   }
 
@@ -284,16 +294,28 @@ export default function SignPage() {
                       Verification successful!
                     </p>
                   )}
-                  <Turnstile
-                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
-                    onSuccess={onTurnstileSuccess}
-                    onError={onTurnstileError}
-                    onExpire={onTurnstileExpired}
-                    options={{
-                      theme: "light",
-                      size: "normal",
-                    }}
-                  />
+                  {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? (
+                    <Turnstile
+                      siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                      onSuccess={onTurnstileSuccess}
+                      onError={onTurnstileError}
+                      onExpire={onTurnstileExpired}
+                      options={{
+                        theme: "light",
+                        size: "normal",
+                      }}
+                    />
+                  ) : (
+                    <div className="border border-red-200 bg-red-50 p-4 rounded">
+                      <p className="text-red-600 text-sm">
+                        ⚠️ Turnstile configuration error: Site key not found. 
+                        Please check your environment variables.
+                      </p>
+                      <p className="text-red-500 text-xs mt-1">
+                        Expected: NEXT_PUBLIC_TURNSTILE_SITE_KEY
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex items-center space-x-2">

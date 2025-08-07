@@ -264,19 +264,34 @@ export default function ContactPage() {
                           Verification successful!
                         </p>
                       )}
-                      <Turnstile
-                        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                        onSuccess={(token) => {
-                          setTurnstileToken(token)
-                          if (error) setError(null)
-                        }}
-                        onExpire={() => setTurnstileToken(null)}
-                        onError={() => setTurnstileToken(null)}
-                        options={{
-                          theme: "light",
-                          size: "normal",
-                        }}
-                      />
+                      {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? (
+                        <Turnstile
+                          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                          onSuccess={(token) => {
+                            console.log('✅ Contact Turnstile verified successfully')
+                            setTurnstileToken(token)
+                            if (error) setError(null)
+                          }}
+                          onExpire={() => {
+                            console.log('⏰ Contact Turnstile token expired')
+                            setTurnstileToken(null)
+                          }}
+                          onError={(error) => {
+                            console.error('❌ Contact Turnstile error:', error)
+                            setTurnstileToken(null)
+                          }}
+                          options={{
+                            theme: "light",
+                            size: "normal",
+                          }}
+                        />
+                      ) : (
+                        <div className="border border-red-200 bg-red-50 p-4 rounded">
+                          <p className="text-red-600 text-sm">
+                            ⚠️ Turnstile configuration error: Site key not found.
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     <Button

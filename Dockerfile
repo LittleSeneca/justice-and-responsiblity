@@ -21,14 +21,22 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Build arguments to receive environment variables from Digital Ocean at build time
+ARG MONGODB_URI
+ARG TURNSTILE_SECRET_KEY
+ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
+ARG NEXT_PUBLIC_EMAILJS_SERVICE_ID
+ARG NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+ARG NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
 # Set environment variables for build process
-# These are required for Next.js to build successfully when it analyzes API routes
-ENV MONGODB_URI=mongodb://placeholder:27017/placeholder \
-    TURNSTILE_SECRET_KEY=placeholder \
-    NEXT_PUBLIC_TURNSTILE_SITE_KEY=placeholder \
-    NEXT_PUBLIC_EMAILJS_SERVICE_ID=placeholder \
-    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=placeholder \
-    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=placeholder
+# Use actual values from build args, with fallbacks for local builds
+ENV MONGODB_URI=${MONGODB_URI:-mongodb://placeholder:27017/placeholder} \
+    TURNSTILE_SECRET_KEY=${TURNSTILE_SECRET_KEY:-placeholder} \
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY=${NEXT_PUBLIC_TURNSTILE_SITE_KEY} \
+    NEXT_PUBLIC_EMAILJS_SERVICE_ID=${NEXT_PUBLIC_EMAILJS_SERVICE_ID} \
+    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=${NEXT_PUBLIC_EMAILJS_TEMPLATE_ID} \
+    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=${NEXT_PUBLIC_EMAILJS_PUBLIC_KEY}
 
 # Install pnpm and build the application
 RUN npm install -g pnpm && pnpm build
