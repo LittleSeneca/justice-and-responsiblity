@@ -20,6 +20,8 @@ export default function SignPage() {
   // Debug: Check if environment variables are loaded
   useEffect(() => {
     console.log('Turnstile Site Key:', process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? 'Loaded' : 'Missing')
+  console.log('Site Key Value:', process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY)
+  console.log('Current Domain:', typeof window !== 'undefined' ? window.location.hostname : 'Server-side')
   }, [])
   const [formData, setFormData] = useState({
     firstName: "",
