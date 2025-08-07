@@ -1,0 +1,29 @@
+services:
+  justice-and-responsibility:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    container_name: justice-and-responsibility-app
+
+  justice-and-responsibility-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4001:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_TURNSTILE_SITE_KEY=${TURNSTILE_SITE_KEY}
+      - TURNSTILE_SECRET_KEY=${TURNSTILE_SECRET_KEY}
+      - MONGODB_URI=${MONGODB_URI}
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    restart: unless-stopped
+    container_name: justice-and-responsibility-dev 
