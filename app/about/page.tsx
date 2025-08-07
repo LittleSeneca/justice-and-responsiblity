@@ -64,6 +64,36 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* Our Impact Section */}
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Impact</h2>
+            <div className="text-gray-700 leading-relaxed space-y-6">
+              <p>
+                The Justice and Responsibility Charter represents more than just a document. It is the foundation of a grassroots movement that fundamentally changes how Americans engage with their elected representatives. By gathering signatories from across the political spectrum, we create undeniable proof that there is broad, bipartisan support for the structural reforms outlined in our charter.
+              </p>
+              <p>
+                As this platform grows, we hope it will become the central nexus of a coordinated effort to pressure our elected officials to either embrace these essential reforms or face primary challenges from candidates who do. We envision a future where the most common and universal question Americans ask of their representatives is: <strong>"Did you sign the Justice and Responsibility Charter?"</strong> This simple question cuts through partisan rhetoric and forces politicians to take a clear stance on transparency, accountability, and genuine reform.
+              </p>
+              <p>
+                As the charter gains traction and recognition, we will implement comprehensive tracking systems to monitor our elected officials' positions and actions related to our platform. This will include:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  <strong>The Praise Board:</strong> Recognition and celebration of elected officials who actively support the charter's goals and demonstrate genuine commitment to its principles through their voting records and policy positions.
+                </li>
+                <li>
+                  <strong>The Name and Shame Board:</strong> Transparent documentation of representatives who oppose charter principles, block meaningful reforms, or continue to engage in the exact behaviors our movement seeks to eliminate.
+                </li>
+              </ul>
+              <p>
+                This accountability framework will provide voters with clear, factual information about where their representatives stand on the issues that matter most to good governance. By shining a light on both positive and negative actions, we will create powerful incentives for elected officials to align with the public interest rather than special interests.
+              </p>
+              <p>
+                The ultimate goal is not to punish or reward politicians, but to create a political environment where supporting transparency, fiscal responsibility, and ethical governance becomes the clear path to electoral success. When enough Americans unite behind these principles, even the most entrenched politicians have no choice but to listen or be replaced by those who do.
+              </p>
+            </div>
+          </section>
+
           {/* About the Author Section */}
           <section className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">About the Charter's Author</h2>
@@ -111,7 +141,12 @@ export default function AboutPage() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 text-gray-600 py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 Justice and Responsibility Charter. A movement for government accountability.</p>
+          <p>&copy; 2025 Justice and Responsibility Charter. A movement for government accountability.</p>
+          <div className="mt-4 space-x-4">
+            <Link href="/privacy" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</Link>
+            <Link href="/sitemap" className="text-blue-600 hover:text-blue-700 underline">Site Map</Link>
+            <Link href="/contact" className="text-blue-600 hover:text-blue-700 underline">Contact</Link>
+          </div>
         </div>
       </footer>
     </div>

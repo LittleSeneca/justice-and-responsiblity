@@ -28,6 +28,7 @@ export default function SignPage() {
     state: "",
     comments: "",
     agreeToTerms: false,
+    subscribeToNewsletter: false,
   })
   
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
@@ -270,6 +271,32 @@ export default function SignPage() {
                   />
                 </div>
 
+                {/* Newsletter Subscription */}
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="subscribeToNewsletter"
+                    checked={formData.subscribeToNewsletter}
+                    onCheckedChange={(checked) => handleInputChange("subscribeToNewsletter", checked as boolean)}
+                  />
+                  <Label htmlFor="subscribeToNewsletter" className="text-sm">
+                    Yes, I want to receive email updates about the Justice and Responsibility Charter movement
+                  </Label>
+                </div>
+
+                {/* Data Privacy Notice */}
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h4 className="text-sm font-semibold text-blue-800 mb-2">🔒 Data Privacy & Security</h4>
+                  <p className="text-xs text-blue-700 leading-relaxed">
+                    Your personal information is securely encrypted and stored using industry-standard security practices. 
+                    We will never sell, share, or distribute your data to third parties. Your information is used solely 
+                    for displaying your signature on our public charter list and, if selected, sending you occasional 
+                    updates about the movement. You can request data removal at any time by contacting us.
+                  </p>
+                  <p className="text-xs text-blue-700 mt-2">
+                    For complete details, please read our <Link href="/privacy" className="text-blue-800 hover:text-blue-900 underline font-medium">Privacy Policy</Link>.
+                  </p>
+                </div>
+
                 {/* Turnstile Section */}
                 <div className="border rounded-lg p-4 bg-gray-50">
                   <Label className="text-sm font-medium mb-2 block">Security Verification *</Label>
@@ -318,7 +345,12 @@ export default function SignPage() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 text-gray-600 py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 Justice and Responsibility Charter. A movement for government accountability.</p>
+          <p>&copy; 2025 Justice and Responsibility Charter. A movement for government accountability.</p>
+          <div className="mt-4 space-x-4">
+            <Link href="/privacy" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</Link>
+            <Link href="/sitemap" className="text-blue-600 hover:text-blue-700 underline">Site Map</Link>
+            <Link href="/contact" className="text-blue-600 hover:text-blue-700 underline">Contact</Link>
+          </div>
         </div>
       </footer>
     </div>

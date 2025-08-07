@@ -324,7 +324,12 @@ export default function ContactPage() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 text-gray-600 py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 Justice and Responsibility Charter. A movement for government accountability.</p>
+          <p>&copy; 2025 Justice and Responsibility Charter. A movement for government accountability.</p>
+          <div className="mt-4 space-x-4">
+            <Link href="/privacy" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</Link>
+            <Link href="/sitemap" className="text-blue-600 hover:text-blue-700 underline">Site Map</Link>
+            <Link href="/contact" className="text-blue-600 hover:text-blue-700 underline">Contact</Link>
+          </div>
         </div>
       </footer>
     </div>

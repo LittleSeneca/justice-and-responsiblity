@@ -31,6 +31,10 @@ const SignatorySchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
+  subscribeToNewsletter: {
+    type: Boolean,
+    default: false
+  },
   signedAt: {
     type: Date,
     default: Date.now
