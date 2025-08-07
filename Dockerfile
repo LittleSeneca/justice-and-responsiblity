@@ -26,6 +26,15 @@ COPY . .
 # Install pnpm
 RUN npm install -g pnpm
 
+# Set environment variables for build process
+# These are required for Next.js to build successfully when it analyzes API routes
+ENV MONGODB_URI=mongodb://placeholder:27017/placeholder
+ENV TURNSTILE_SECRET_KEY=placeholder
+ENV NEXT_PUBLIC_TURNSTILE_SITE_KEY=placeholder
+ENV NEXT_PUBLIC_EMAILJS_SERVICE_ID=placeholder
+ENV NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=placeholder
+ENV NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=placeholder
+
 # Build the application
 RUN pnpm build
 
@@ -40,7 +49,8 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/public ./public
+# Copy public folder with proper error handling
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
