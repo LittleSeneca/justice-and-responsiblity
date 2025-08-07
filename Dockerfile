@@ -4,10 +4,8 @@ FROM node:20-alpine AS base
 # Install dependencies only when needed
 FROM base AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
-
-# Install pnpm
-RUN npm install -g pnpm
+RUN apk add --no-cache libc6-compat && \
+    npm install -g pnpm
 
 WORKDIR /app
 
@@ -23,38 +21,35 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Install pnpm
-RUN npm install -g pnpm
-
 # Set environment variables for build process
 # These are required for Next.js to build successfully when it analyzes API routes
-ENV MONGODB_URI=mongodb://placeholder:27017/placeholder
-ENV TURNSTILE_SECRET_KEY=placeholder
-ENV NEXT_PUBLIC_TURNSTILE_SITE_KEY=placeholder
-ENV NEXT_PUBLIC_EMAILJS_SERVICE_ID=placeholder
-ENV NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=placeholder
-ENV NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=placeholder
+ENV MONGODB_URI=mongodb://placeholder:27017/placeholder \
+    TURNSTILE_SECRET_KEY=placeholder \
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY=placeholder \
+    NEXT_PUBLIC_EMAILJS_SERVICE_ID=placeholder \
+    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=placeholder \
+    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=placeholder
 
-# Build the application
-RUN pnpm build
+# Install pnpm and build the application
+RUN npm install -g pnpm && pnpm build
 
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 # Uncomment the following line in case you want to disable telemetry during runtime.
-# ENV NEXT_TELEMETRY_DISABLED 1
+# ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
 
 # Copy public folder with proper error handling
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
+RUN mkdir .next && \
+    chown nextjs:nodejs .next
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
@@ -65,8 +60,8 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=3000 \
+    HOSTNAME="0.0.0.0"
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
