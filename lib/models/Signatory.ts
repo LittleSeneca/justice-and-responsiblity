@@ -27,9 +27,9 @@ const SignatorySchema = new mongoose.Schema({
     default: '',
     trim: true
   },
-  agreeToTerms: {
+  isPublic: {
     type: Boolean,
-    required: true
+    default: true
   },
   subscribeToNewsletter: {
     type: Boolean,

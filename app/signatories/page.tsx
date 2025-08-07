@@ -17,6 +17,7 @@ interface Signatory {
   isCongressMember: boolean
   congressionalTitle: string
   district: string
+  isPublic: boolean
 }
 
 interface StateStats {
@@ -72,7 +73,7 @@ export default function SignatoriesPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Charter Signatories</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Citizens and representatives who have pledged their support for government transparency and accountability.
+            Citizens and representatives who have pledged their support for government transparency and accountability. Private signatories are shown as "Anonymous" to protect their privacy.
           </p>
           {loading && <p className="text-gray-500 mt-4">Loading signatories...</p>}
         </div>
@@ -143,13 +144,26 @@ export default function SignatoriesPage() {
                         data.signatories.map((signatory) => (
                           <div key={signatory._id} className="flex justify-between items-center p-2 hover:bg-gray-50 rounded">
                             <div className="flex-1">
-                              {signatory.isCongressMember ? (
-                                <span className="font-medium text-gray-900">
-                                  {signatory.congressionalTitle === 'representative' ? 'Rep.' : 'Sen.'} {signatory.firstName} {signatory.lastName}
-                                </span>
+                              {signatory.isPublic ? (
+                                // Show real name for public signatories
+                                <>
+                                  {signatory.isCongressMember ? (
+                                    <span className="font-medium text-gray-900">
+                                      {signatory.congressionalTitle === 'representative' ? 'Rep.' : 'Sen.'} {signatory.firstName} {signatory.lastName}
+                                    </span>
+                                  ) : (
+                                    <span className="font-medium text-gray-900">
+                                      {signatory.firstName} {signatory.lastName}
+                                    </span>
+                                  )}
+                                </>
                               ) : (
-                                <span className="font-medium text-gray-900">
-                                  {signatory.firstName} {signatory.lastName}
+                                // Show "Anonymous" for private signatories
+                                <span className="font-medium text-gray-600 italic">
+                                  Anonymous {signatory.isCongressMember ? 
+                                    (signatory.congressionalTitle === 'representative' ? 'Representative' : 'Senator') : 
+                                    'Citizen'
+                                  }
                                 </span>
                               )}
                               <span className="text-sm text-gray-600 ml-2">
@@ -158,6 +172,11 @@ export default function SignatoriesPage() {
                               {signatory.isCongressMember && (
                                 <span className="ml-2 px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full">
                                   Congress
+                                </span>
+                              )}
+                              {!signatory.isPublic && (
+                                <span className="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">
+                                  Private
                                 </span>
                               )}
                             </div>

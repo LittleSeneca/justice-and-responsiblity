@@ -39,7 +39,7 @@ export default function SignPage() {
     email: "",
     state: "",
     comments: "",
-    agreeToTerms: false,
+    signingType: "public",
     subscribeToNewsletter: false,
   })
   
@@ -80,6 +80,7 @@ export default function SignPage() {
         },
         body: JSON.stringify({
           ...formData,
+          isPublic: formData.signingType === "public",
           turnstileToken
         }),
       })
@@ -318,16 +319,20 @@ export default function SignPage() {
                   )}
                 </div>
 
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="agreeToTerms"
-                    required
-                    checked={formData.agreeToTerms}
-                    onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
-                  />
-                  <Label htmlFor="agreeToTerms" className="text-sm">
-                    I agree to have my name publicly listed as a signatory to this charter *
-                  </Label>
+                <div>
+                  <Label htmlFor="signingType">How would you like to sign the charter? *</Label>
+                  <Select onValueChange={(value) => handleInputChange("signingType", value)} defaultValue="public">
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select signing preference" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="public">Public with name - Show my name on the public signatories list</SelectItem>
+                      <SelectItem value="private">Private with name - Record my signature but don't show my name publicly</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Both options record your signature equally. Choosing "private" means your name won't appear on the public list, but your signature is still counted.
+                  </p>
                 </div>
 
                 <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" size="lg">

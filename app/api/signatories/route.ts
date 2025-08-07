@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     
     // Validate required fields
-    const requiredFields = ['firstName', 'lastName', 'email', 'state', 'agreeToTerms', 'turnstileToken']
+    const requiredFields = ['firstName', 'lastName', 'email', 'state', 'turnstileToken']
     for (const field of requiredFields) {
       if (!body[field]) {
         return NextResponse.json(
@@ -135,6 +135,11 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         )
       }
+    }
+    
+    // Validate isPublic field exists (default to true if not provided)
+    if (typeof body.isPublic !== 'boolean') {
+      body.isPublic = true
     }
     
     // Verify Turnstile token
@@ -234,9 +239,9 @@ export async function GET(request: NextRequest) {
       { $sort: { total: -1 } }
     ])
     
-    // Get recent signatories for display (last 100)
+    // Get recent signatories for display (last 100) - includes both public and private
     const recentSignatories = await Signatory.find()
-      .select('firstName lastName state signedAt isCongressMember congressionalTitle district')
+      .select('firstName lastName state signedAt isCongressMember congressionalTitle district isPublic')
       .sort({ signedAt: -1 })
       .limit(100)
       .lean()
