@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, UserCheck } from "lucide-react"
+import { Users, UserCheck, Scale, Eye, Map, Clock, Ban, FileX } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Header } from "@/components/Navigation"
 import { Footer } from "@/components/Footer"
@@ -18,24 +18,21 @@ const scrollToRef = (refId: string) => {
 
 // Live debt counter component
 function LiveDebtCounter() {
-  const [currentDebt, setCurrentDebt] = useState(36930452345865)
+  const [currentDebt, setCurrentDebt] = useState(36100000000000)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchDebt = async () => {
       try {
-        const response = await fetch('https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page[size]=1')
+        const response = await fetch('/api/debt')
         if (response.ok) {
           const data = await response.json()
-          if (data.data && data.data.length > 0) {
-            const latestDebt = parseFloat(data.data[0].tot_pub_debt_out_amt)
-            if (!isNaN(latestDebt)) {
-              setCurrentDebt(latestDebt)
-            }
+          if (data.debt && !isNaN(data.debt)) {
+            setCurrentDebt(data.debt)
           }
         }
       } catch (error) {
-        console.error('Error fetching debt data:', error)
+        console.warn('Unable to fetch live debt data:', error instanceof Error ? error.message : 'Unknown error')
       } finally {
         setIsLoading(false)
       }
@@ -44,8 +41,8 @@ function LiveDebtCounter() {
     // Fetch immediately
     fetchDebt()
 
-    // Then fetch every 3 seconds
-    const interval = setInterval(fetchDebt, 3000)
+    // Fetch every 30 seconds for live updates
+    const interval = setInterval(fetchDebt, 30000)
 
     return () => clearInterval(interval)
   }, [])
@@ -68,38 +65,25 @@ function LiveDebtCounter() {
 
 // Live debt per person counter component
 function LiveDebtPerPerson() {
-  const [currentDebt, setCurrentDebt] = useState(36930452345865)
-  const [currentPopulation, setCurrentPopulation] = useState(335893238)
+  const [currentDebt, setCurrentDebt] = useState(36100000000000)
+  const [currentPopulation, setCurrentPopulation] = useState(336000000)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch debt data
-        const debtResponse = await fetch('https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&page[size]=1')
-        if (debtResponse.ok) {
-          const debtData = await debtResponse.json()
-          if (debtData.data && debtData.data.length > 0) {
-            const latestDebt = parseFloat(debtData.data[0].tot_pub_debt_out_amt)
-            if (!isNaN(latestDebt)) {
-              setCurrentDebt(latestDebt)
-            }
+        const response = await fetch('/api/debt')
+        if (response.ok) {
+          const data = await response.json()
+          if (data.debt && !isNaN(data.debt)) {
+            setCurrentDebt(data.debt)
           }
-        }
-
-        // Fetch population data
-        const popResponse = await fetch('https://api.census.gov/data/2023/pep/charv?get=POP&for=us:*&YEAR=2023')
-        if (popResponse.ok) {
-          const popData = await popResponse.json()
-          if (popData && popData.length > 1 && popData[1][0]) {
-            const latestPop = parseInt(popData[1][0])
-            if (!isNaN(latestPop)) {
-              setCurrentPopulation(latestPop)
-            }
+          if (data.population && !isNaN(data.population)) {
+            setCurrentPopulation(data.population)
           }
         }
       } catch (error) {
-        console.error('Error fetching data:', error)
+        console.warn('Unable to fetch live data:', error instanceof Error ? error.message : 'Unknown error')
       } finally {
         setIsLoading(false)
       }
@@ -108,8 +92,8 @@ function LiveDebtPerPerson() {
     // Fetch immediately
     fetchData()
 
-    // Then fetch every 3 seconds
-    const interval = setInterval(fetchData, 3000)
+    // Fetch every 30 seconds for live updates
+    const interval = setInterval(fetchData, 30000)
 
     return () => clearInterval(interval)
   }, [])
@@ -207,6 +191,93 @@ export default function HomePage() {
           </div>
 
 
+        </div>
+      </section>
+
+      {/* Key Reforms Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+            Six Essential Reforms
+          </h2>
+          <p className="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            These structural solutions address the root causes of dysfunction in American government
+          </p>
+          
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {/* Box 1 - Balanced Budget */}
+            <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <Scale className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+                <h3 className="font-semibold text-gray-900 text-sm">
+                  Balanced the Budget
+                </h3>
+              </CardContent>
+            </Card>
+
+            {/* Box 2 - Full Disclosure */}
+            <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <Eye className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+                <h3 className="font-semibold text-gray-900 text-sm">
+                  Full Disclosure On Epstein
+                </h3>
+              </CardContent>
+            </Card>
+
+            {/* Box 3 - No Gerrymandering */}
+            <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <Map className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+                <h3 className="font-semibold text-gray-900 text-sm">
+                  No More Gerrymandering
+                </h3>
+              </CardContent>
+            </Card>
+
+            {/* Box 4 - Term Limits */}
+            <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <Clock className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+                <h3 className="font-semibold text-gray-900 text-sm">
+                  Enact Term Limits
+                </h3>
+              </CardContent>
+            </Card>
+
+            {/* Box 5 - No More Super PACs */}
+            <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <Ban className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+                <h3 className="font-semibold text-gray-900 text-sm">
+                  No More Super PACs
+                </h3>
+              </CardContent>
+            </Card>
+
+            {/* Box 6 - No Omnibus Bills */}
+            <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <FileX className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+                <h3 className="font-semibold text-gray-900 text-sm">
+                  No 2000+ Page Omnibus Bills
+                </h3>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Explanation Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <Card className="bg-blue-500 border-blue-600">
+            <CardContent className="p-8">
+              <p className="text-lg text-white leading-relaxed text-center">
+                These six reforms are designed to work in synergy. First, banning Super PACs, ending gerrymandering, and enacting term limits aim to make politicians accountable to voters, not special interests. This new accountability is then enforced through transparent governing rules like a balanced budget and a ban on secretive omnibus bills. Finally, the full Epstein disclosure serves as a litmus test, proving the system now prioritizes justice over protecting the powerful.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
