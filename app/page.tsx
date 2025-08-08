@@ -198,13 +198,13 @@ export default function HomePage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
-            Six Essential Reforms
+            Five Essential Reforms
           </h2>
           <p className="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">
             These structural solutions address the root causes of dysfunction in American government
           </p>
           
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
             {/* Box 1 - Balanced Budget */}
             <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
               <CardContent className="p-6 text-center">
@@ -215,15 +215,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            {/* Box 2 - Full Disclosure */}
-            <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <Eye className="w-8 h-8 mx-auto mb-3 text-blue-600" />
-                <h3 className="font-semibold text-gray-900 text-sm">
-                  Full Disclosure On Epstein
-                </h3>
-              </CardContent>
-            </Card>
+
 
             {/* Box 3 - No Gerrymandering */}
             <Card className="bg-white border-2 border-blue-500 hover:shadow-lg transition-shadow">
@@ -273,9 +265,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4 max-w-4xl">
           <Card className="bg-blue-500 border-blue-600">
             <CardContent className="p-8">
-              <p className="text-lg text-white leading-relaxed text-center">
-                These six reforms are designed to work in synergy. First, banning Super PACs, ending gerrymandering, and enacting term limits aim to make politicians accountable to voters, not special interests. This new accountability is then enforced through transparent governing rules like a balanced budget and a ban on secretive omnibus bills. Finally, the full Epstein disclosure serves as a litmus test, proving the system now prioritizes justice over protecting the powerful.
-              </p>
+                              <p className="text-lg text-white leading-relaxed text-center">
+                These five reforms are designed to work in synergy. First, banning Super PACs, ending gerrymandering, and enacting term limits aim to make politicians accountable to voters, not special interests. This new accountability is then enforced through transparent governing rules like a balanced budget and a ban on secretive omnibus bills that prevent proper democratic oversight.
+                </p>
             </CardContent>
           </Card>
         </div>
@@ -379,22 +371,11 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Article II: On the Withholding of Information of Public Interest
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  The federal government has failed to provide transparency regarding matters of profound public
-                  concern, most notably by refusing to authorize the complete and unredacted release of all documents
-                  pertaining to the Jeffrey Epstein conspiracy<button onClick={() => scrollToRef('ref6')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">6</button>. The continued sequestration of these files obstructs
-                  justice and fosters the perception that a separate standard of law exists for the powerful and elite,
-                  thereby undermining the principle of equal justice for all<button onClick={() => scrollToRef('ref7')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">7</button>.
-                </p>
-              </div>
+
 
               <div>
                 <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Article III: On the Subversion of the Democratic Process
+                  Article II: On the Subversion of the Democratic Process
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   The United States Congress has systematically engaged in the practice of partisan gerrymandering<button onClick={() => scrollToRef('ref3')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">3</button>,
@@ -406,24 +387,24 @@ export default function HomePage() {
 
               <div>
                 <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Article IV: On the Entrenchment of an Unrepresentative Political Class
+                  Article III: On the Entrenchment of an Unrepresentative Political Class
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   The chambers of Congress have become dominated by a gerontocracy of wealthy and powerful individuals
-                  who are disconnected from the realities of the citizenry they purport to represent<button onClick={() => scrollToRef('ref9')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">9</button>. This entrenched
+                  who are disconnected from the realities of the citizenry they purport to represent<button onClick={() => scrollToRef('ref6')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">6</button>. This entrenched
                   class has prioritized the perpetuation of its own influence over the necessary transfer of leadership
-                  to a new generation. They have systematically enriched themselves through insider trading<button onClick={() => scrollToRef('ref10')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">10</button> while
-                  opening the floodgates to unlimited dark money and super PAC corruption<button onClick={() => scrollToRef('ref11')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">11</button>.
+                  to a new generation. They have systematically enriched themselves through insider trading<button onClick={() => scrollToRef('ref7')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">7</button> while
+                  opening the floodgates to unlimited dark money and super PAC corruption<button onClick={() => scrollToRef('ref8')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">8</button>.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Article V: On Obfuscation in the Legislative Process
+                  Article IV: On Obfuscation in the Legislative Process
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   The legislative process has been deliberately corrupted through the routine passage of omnibus bills
-                  of unmanageable length and complexity<button onClick={() => scrollToRef('ref12')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">12</button>. This practice ensures that legislation is neither fully read
+                  of unmanageable length and complexity<button onClick={() => scrollToRef('ref9')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">9</button>. This practice ensures that legislation is neither fully read
                   nor understood by many who vote upon it, and serves to conceal provisions that would not withstand
                   public scrutiny if presented transparently. This method is a primary instrument through which the
                   aforementioned grievances are enacted into law.
@@ -454,52 +435,11 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Section 2: The Special Commission on Full Disclosure
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  A Special Commission shall be established by an act of Congress for the sole purpose of compelling the
-                  Department of Justice and all other government agencies to release the complete, unredacted, and
-                  uncensored files related to the Jeffrey Epstein conspiracy<button onClick={() => scrollToRef('ref8')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">8</button>.
-                </p>
-                <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                  <li>
-                    <strong>2.1. Mandate:</strong> The Commission's mandate is to deliver these materials to a
-                    third-party trust, established on behalf of the American people, for secure and lawful review.
-                  </li>
-                  <li>
-                    <strong>2.2. Composition and Selection:</strong> The Commission shall be a congressionally
-                    chartered, bipartisan body modeled on previous independent commissions.
-                    <ul className="list-disc pl-6 mt-2 space-y-1">
-                      <li>
-                        a. The Commission shall be composed of ten (10) commissioners. No more than five (5)
-                        commissioners shall be members of the same political party.
-                      </li>
-                      <li>
-                        b. Commissioners shall be appointed by a consensus agreement between the majority and minority
-                        leadership of both chambers of Congress.
-                      </li>
-                      <li>
-                        c. To ensure independence, nominees for the Commission shall not have held federal elected
-                        office, served as a federally registered lobbyist, or worked as a senior executive at a federal
-                        agency for a period of no less than ten (10) years prior to their appointment.
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>2.3. Authority:</strong> The Commission shall be granted full subpoena power to compel
-                    testimony and the production of evidence. All commissioners and designated staff shall be granted
-                    security clearance sufficient to review all relevant documents without redaction or censorship. The
-                    principle guiding this section is that the government is of the people and does not possess the
-                    right to withhold information from its citizens.
-                  </li>
-                </ul>
-              </div>
+
 
               <div>
                 <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Section 3: Fair and Independent Congressional Districting
+                  Section 2: Fair and Independent Congressional Districting
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   All congressional districts shall be drawn by independent, non-partisan commissions in each state<button onClick={() => scrollToRef('ref4')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">4</button>. The
@@ -510,16 +450,16 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-3">Section 4: Congressional Term Limits</h3>
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">Section 3: Congressional Term Limits</h3>
                 <p className="text-gray-700 leading-relaxed">
                   No person shall serve as a member of Congress for more than 6 (6) total terms in the House of
-                  Representatives, and no more than four (4) total terms in the Senate<button onClick={() => scrollToRef('ref9')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">9</button>.
+                  Representatives, and no more than four (4) total terms in the Senate<button onClick={() => scrollToRef('ref6')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">6</button>.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Section 5: Campaign Finance and Ethics Reform
+                  Section 4: Campaign Finance and Ethics Reform
                 </h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   To sever the link between wealth and political influence, the following shall be enacted:
@@ -532,13 +472,13 @@ export default function HomePage() {
                   </li>
                   <li>
                     <strong>5.2. Abolition of Special Interest Vehicles:</strong> The legal precedents established by
-                    Citizens United v. FEC shall be overturned by constitutional amendment or superseding legislation<button onClick={() => scrollToRef('ref11')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">11</button>.
+                    Citizens United v. FEC shall be overturned by constitutional amendment or superseding legislation<button onClick={() => scrollToRef('ref8')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">8</button>.
                     All Political Action Committee (PAC) structures shall be abolished as legal mechanisms for campaign
                     donations. Equivalent loopholes will be targeted for removal as they arise.
                   </li>
                   <li>
                     <strong>5.3. Prohibition on Securities Trading:</strong> Sitting members of Congress shall be
-                    prohibited from trading in individual stocks or other individual securities<button onClick={() => scrollToRef('ref10')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">10</button> and may only participate
+                    prohibited from trading in individual stocks or other individual securities<button onClick={() => scrollToRef('ref7')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">7</button> and may only participate
                     in well-defined mutual funds or other stock allocations. An independent non-congressional committee
                     will be established to define appropriate stock allocations, as well as provide oversite and audit
                     controls.
@@ -552,7 +492,7 @@ export default function HomePage() {
 
               <div>
                 <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                  Section 6: Legislative Transparency and Readability
+                  Section 5: Legislative Transparency and Readability
                 </h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   To ensure due diligence and public oversight in the legislative process, the following rules shall
@@ -564,7 +504,7 @@ export default function HomePage() {
                     prohibiting the inclusion of provisions unrelated to the central purpose of the bill.
                   </li>
                   <li>
-                    <strong>6.2. Public Review and Bill Length:</strong> To ensure sufficient time for public review<button onClick={() => scrollToRef('ref12')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">12</button>,
+                    <strong>6.2. Public Review and Bill Length:</strong> To ensure sufficient time for public review<button onClick={() => scrollToRef('ref9')} className="text-red-600 hover:text-red-700 text-sm align-super no-underline bg-transparent border-none p-0 cursor-pointer">9</button>,
                     the following shall apply:
                     <ul className="list-disc pl-6 mt-2 space-y-1">
                       <li>
@@ -738,80 +678,9 @@ export default function HomePage() {
                   </span>
                 </div>
               </div>
+
               <div id="ref6" className="flex items-start gap-2">
                 <span className="text-red-600 font-medium min-w-[20px]">6.</span>
-                <div>
-                  <strong>Jeffrey Epstein Files Government Secrecy:</strong> Extensive documentation reveals a pattern of deliberate non-transparency by both Republican and Democratic administrations regarding Jeffrey Epstein-related documents. The Trump administration promised to release files but then reversed course completely. During the Biden administration, the FBI under Democratic leadership continued to withhold thousands of pages of Epstein-related documents through FOIA rejections and legal stonewalling. Even during the Obama years, federal agencies failed to pursue transparency on Epstein matters. This demonstrates bipartisan resistance to transparency across multiple presidential administrations from both parties.
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://www.businessinsider.com/jeffrey-epstein-files-records-trump-admin-keeping-secret-may-release-2025-6" target="_blank" rel="noopener noreferrer" className="underline">
-                      Business Insider: Biden Administration FBI Rejected FOIA Requests and Continued Stonewalling
-                    </a>
-                  </span>
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://jacobin.com/2025/07/jeffrey-epstein-files-trump-elites" target="_blank" rel="noopener noreferrer" className="underline">
-                      Jacobin: Of Course Trump Doesn't Want to Release the Epstein Files
-                    </a>
-                  </span>
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://www.levernews.com/court-records-reveal-feds-shifting-story-on-epstein-files/" target="_blank" rel="noopener noreferrer" className="underline">
-                      The Lever: Eight-Year Legal Battle Shows DOJ's Shifting Arguments Across Democratic and Republican Administrations
-                    </a>
-                  </span>
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://news.bloomberglaw.com/white-collar-and-criminal-law/fbi-redacted-trumps-name-in-epstein-files-for-privacy-reasons" target="_blank" rel="noopener noreferrer" className="underline">
-                      Bloomberg Law: FBI Redacted Trump's Name in Epstein Files for Privacy Reasons
-                    </a>
-                  </span>
-                </div>
-              </div>
-              <div id="ref7" className="flex items-start gap-2">
-                <span className="text-red-600 font-medium min-w-[20px]">7.</span>
-                <div>
-                  <strong>Government Secrecy and Equal Justice Concerns:</strong> The withholding of Epstein-related documents has created legitimate concerns about a two-tiered justice system where powerful individuals receive different treatment. Multiple FOIA requests have been denied or delayed, and changing government justifications for secrecy have undermined public trust in equal application of the law.
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://www.theblackvault.com/documentarchive/fbi-files-on-jeffrey-epstein/" target="_blank" rel="noopener noreferrer" className="underline">
-                      The Black Vault: FBI Files on Jeffrey Epstein - FOIA Documentation
-                    </a>
-                  </span>
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://www.yahoo.com/news/real-epstein-files-story-misunderstood-120613402.html" target="_blank" rel="noopener noreferrer" className="underline">
-                      Yahoo News: The Real 'Epstein Files' Story Is Misunderstood
-                    </a>
-                  </span>
-                </div>
-              </div>
-              <div id="ref8" className="flex items-start gap-2">
-                <span className="text-red-600 font-medium min-w-[20px]">8.</span>
-                <div>
-                  <strong>Independent Commission Benefits and Effectiveness:</strong> Research demonstrates that independent, bipartisan commissions with clear mandates, proper authority, and diverse membership consistently produce more transparent, accountable, and effective results than politically-controlled processes. Studies show these commissions reduce partisan influence, increase public trust, and deliver more objective outcomes when investigating sensitive matters.
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://www.hks.harvard.edu/faculty-research/policy-topics/democracy-governance/can-independent-commissions-create-fair-voting" target="_blank" rel="noopener noreferrer" className="underline">
-                      Harvard Kennedy School: Can Independent Commissions Create Fair Outcomes?
-                    </a>
-                  </span>
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://www.brennancenter.org/our-work/policy-solutions/better-way-draw-districts" target="_blank" rel="noopener noreferrer" className="underline">
-                      Brennan Center: Independent Commission Structure and Effectiveness
-                    </a>
-                  </span>
-                  <br />
-                  <span className="text-blue-600 hover:text-blue-700">
-                    <a href="https://www.commoncause.org/resources/unlocking-fair-maps/" target="_blank" rel="noopener noreferrer" className="underline">
-                      Common Cause: Keys to Independent Commission Success
-                    </a>
-                  </span>
-                </div>
-              </div>
-              <div id="ref9" className="flex items-start gap-2">
-                <span className="text-red-600 font-medium min-w-[20px]">9.</span>
                 <div>
                   <strong>Congressional Aging and Deaths in Office:</strong> Comprehensive data shows Congress has become significantly older, with representatives dying in office at alarming rates. The average age of Congress has increased by 12 years in the Senate and 9 years in the House since 1980, while the 118th Congress is the third oldest since 1789. Since 2000, at least 33 House members and multiple senators have died while serving, demonstrating the urgent need for term limits to ensure responsive representation.
                   <br />
@@ -848,8 +717,8 @@ export default function HomePage() {
                   </span>
                 </div>
               </div>
-              <div id="ref10" className="flex items-start gap-2">
-                <span className="text-red-600 font-medium min-w-[20px]">10.</span>
+              <div id="ref7" className="flex items-start gap-2">
+                <span className="text-red-600 font-medium min-w-[20px]">7.</span>
                 <div>
                   <strong>Congressional Insider Trading and Securities Violations:</strong> Extensive evidence demonstrates widespread violations of the STOCK Act by members of Congress, who systematically outperform the market through access to non-public information. In the 117th Congress alone, 78 members violated federal disclosure laws, while studies show senators earn abnormal returns of 4.9% over 3 months. This insider trading undermines market integrity and democratic trust.
                   <br />
@@ -882,8 +751,8 @@ export default function HomePage() {
                   </span>
                 </div>
               </div>
-              <div id="ref11" className="flex items-start gap-2">
-                <span className="text-red-600 font-medium min-w-[20px]">11.</span>
+              <div id="ref8" className="flex items-start gap-2">
+                <span className="text-red-600 font-medium min-w-[20px]">8.</span>
                 <div>
                   <strong>Citizens United and Super PAC Corruption:</strong> The Citizens United decision has fundamentally corrupted American democracy by allowing unlimited dark money to flow through super PACs, creating a system where billionaires and corporations buy political influence. Research shows this has led to increased political polarization, reduced democratic responsiveness, and the disenfranchisement of ordinary voters. Over $3 billion has been spent by super PACs in federal elections, with 68% coming from donors contributing over $1 million.
                   <br />
@@ -902,8 +771,8 @@ export default function HomePage() {
                   </span>
                 </div>
               </div>
-              <div id="ref12" className="flex items-start gap-2">
-                <span className="text-red-600 font-medium min-w-[20px]">12.</span>
+              <div id="ref9" className="flex items-start gap-2">
+                <span className="text-red-600 font-medium min-w-[20px]">9.</span>
                 <div>
                   <strong>Omnibus Bills and Legislative Obfuscation:</strong> Modern Congress routinely passes massive, unreadable omnibus bills that lawmakers admit they haven't read. The Affordable Care Act ran 2,700 pages, Dodd-Frank exceeded 2,300 pages, and recent spending bills have reached over 5,593 pages. Even Supreme Court justices have called reading such legislation "cruel and unusual punishment." Academic research shows this creates "comprehension asymmetries" where bills pass precisely because they're incomprehensible, enabling hidden provisions and undermining democratic accountability.
                   <br />
