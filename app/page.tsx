@@ -145,8 +145,16 @@ export default function HomePage() {
       <Header className="bg-white/80 backdrop-blur-sm" />
 
       {/* Hero Section */}
-      <section className="py-12 text-white relative bg-gradient-to-br from-blue-800 via-blue-600 to-blue-500">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-12 text-white relative bg-blue-600">
+        {/* Background Lady Liberty Image */}
+        <div 
+          className="absolute right-0 bottom-0 w-1/3 h-96 bg-no-repeat bg-right bg-contain pointer-events-none"
+        style={{
+            backgroundImage: 'url(/images/lady-liberty.png)',
+            backgroundPosition: 'right bottom'
+          }}
+        />
+        <div className="container mx-auto px-4 text-center relative z-10">
           {/* Call to Action Box */}
           <div className="mb-8 max-w-5xl mx-auto">
             <Card className="bg-white/95 border-white/50 text-gray-900">
@@ -274,7 +282,7 @@ export default function HomePage() {
       </section>
 
       {/* Mission Statement Section */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-6xl">
           {/* Main Content Container */}
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -319,7 +327,7 @@ export default function HomePage() {
       </section>
 
       {/* Charter Text Section */}
-      <section id="charter-text" className="pt-6 pb-12 bg-white border-b border-gray-200">
+      <section id="charter-text" className="pt-6 pb-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-6xl md:text-6xl font-bold text-blue-600 mb-4">
           The Justice and Responsibility Charter
@@ -537,9 +545,9 @@ export default function HomePage() {
 
         </div>
           {/* Mission Statement Section */}
-          <section className="py-12 bg-gradient-to-b from-gray-50 to-gray-100 rounded-lg my-12">
+          <section className="py-12 bg-gray-50 rounded-lg my-12">
             <div className="container mx-auto px-4 max-w-4xl">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 border border-blue-200">
+              <div className="bg-blue-50 rounded-lg p-8 border border-blue-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Mission</h3>
                 <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
                   <p>
@@ -559,12 +567,12 @@ export default function HomePage() {
               <div className="text-center mt-12">
                 <p className="text-lg text-gray-600 mb-6">
                   Real change begins when we stop treating symptoms and start curing the disease itself.
-                </p>
-                <Link href="/sign">
+            </p>
+            <Link href="/sign">
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4">
                     Add Your Voice to the Movement
-                  </Button>
-                </Link>
+              </Button>
+            </Link>
                 <p className="text-sm text-gray-500 mt-4">
                   Join thousands of Americans demanding transparent, accountable governance
                 </p>

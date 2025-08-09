@@ -7,11 +7,11 @@ import { Footer } from "@/components/Footer"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-white">
       <Header className="bg-white/80 backdrop-blur-sm" />
 
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <section className="py-12 bg-blue-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">About This Movement</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
